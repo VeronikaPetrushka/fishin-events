@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from "react";
-import { View, StyleSheet, Text, TouchableOpacity, ScrollView, Dimensions, Image } from "react-native"
+import { View, StyleSheet, Text, TouchableOpacity, ScrollView, Dimensions, Image, ImageBackground } from "react-native"
 import { useNavigation, useFocusEffect } from "@react-navigation/native";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import LinearGradient from 'react-native-linear-gradient';
@@ -27,6 +27,10 @@ const Home = () => {
         }, [])
     );
 
+    const totalWeight = catches.reduce((sum, item) => sum + parseFloat(item.weight || 0), 0).toFixed(2);
+
+    const bestWeight = catches.length > 0 ? Math.max(...catches.map(item => parseFloat(item.weight || 0))).toFixed(2) : 0;
+    
     return (
         <LinearGradient
             colors={['#0088F0', '#015392']}
@@ -38,19 +42,21 @@ const Home = () => {
 
                 <Text style={styles.title}>My Catches</Text>
 
-                <TouchableOpacity 
-                    style={{width: '100%', height: 112, marginBottom: 20, alignSelf: 'center'}}
-                    onPress={() => navigation.navigate('AddCatchScreen')}
-                    >
-                    <Image source={require('../assets/decor/add-btn.png')} style={{width: '100%', height: '100%', resizeMode: 'contain'}} />
-                </TouchableOpacity>
-
-                <TouchableOpacity
-                    style={{width: 243, height: 111, marginBottom: 38, alignSelf: 'center'}}
-                    onPress={() => navigation.navigate('GameScreen')}
-                    >
-                    <Image source={require('../assets/decor/game-btn.png')} style={{width: '100%', height: '100%', resizeMode: 'contain'}} />
-                </TouchableOpacity>
+                <ImageBackground source={require('../assets/decor/catches-back.png')} style={{width: '100%', height: 234, borderRadius: 24, overflow: 'hidden', marginBottom: 24}}>
+                    <View style={{flex: 1, padding: 16, backgroundColor: 'rgba(0, 0, 0, 0.5)', justifyContent: 'flex-end'}}>
+                        <View style={{width: '100%', alignItems: 'center', justifyContent: 'space-between', flexDirection: 'row'}}>
+                            <Text style={styles.statText}>Number of fish</Text>
+                            <Text style={styles.statText}>Total weight</Text>
+                            <Text style={styles.statText}>Best weight</Text>
+                        </View>
+                        <View style={{width: '100%', marginVertical: 5, borderWidth: 2, height: 2, borderStyle: 'dotted', borderColor: '#fff'}} />
+                        <View style={{width: '100%', alignItems: 'center', justifyContent: 'space-between', flexDirection: 'row'}}>
+                            <Text style={[styles.statValue, {marginLeft: 20}]}>{catches.length} fish</Text>
+                            <Text style={[styles.statValue, {marginLeft: 40}]}>{totalWeight} kg</Text>
+                            <Text style={styles.statValue}>{bestWeight} kg</Text>
+                        </View>
+                    </View>
+                </ImageBackground>
 
                 <Text style={styles.subTitle}>History</Text>
 
@@ -185,6 +191,20 @@ const styles = StyleSheet.create({
         color: '#fff',
         lineHeight: 22
     },
+
+    statText: {
+        fontWeight: '500',
+        fontSize: 14,
+        color: '#fff',
+        lineHeight: 22
+    },
+
+    statValue: {
+        fontWeight: '600',
+        fontSize: 16,
+        color: '#fff',
+        lineHeight: 22
+    }
 
     
 });

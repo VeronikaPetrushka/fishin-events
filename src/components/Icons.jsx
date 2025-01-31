@@ -26,6 +26,15 @@ const Icons = ({ type, active }) => {
     case 'image':
       imageSource = require('../assets/icons/image.png');
       break;
+    case 'button':
+      imageSource = require('../assets/icons/button.png');
+      break;
+    case 'music-off':
+      imageSource = require('../assets/icons/music-off.png');
+      break;
+    case 'music-on':
+      imageSource = require('../assets/icons/music-on.png');
+      break;
   }
 
   return (

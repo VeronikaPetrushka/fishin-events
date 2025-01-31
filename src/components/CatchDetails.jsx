@@ -344,7 +344,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 16,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: 'rgba(0, 0, 0, 0.7)'
+        backgroundColor: 'rgba(0, 0, 0, 0.6)'
     },
 
     cardName: {

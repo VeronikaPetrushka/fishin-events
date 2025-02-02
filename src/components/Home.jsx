@@ -47,7 +47,7 @@ const Home = () => {
 
                 <TouchableOpacity
                     style={{width: 243, height: 111, marginBottom: 38, alignSelf: 'center'}}
-                    onPress={() => navigation.navigate('GameScreen')}
+                    onPress={() => navigation.navigate('GameMenuScreen')}
                     >
                     <Image source={require('../assets/decor/game-btn.png')} style={{width: '100%', height: '100%', resizeMode: 'contain'}} />
                 </TouchableOpacity>

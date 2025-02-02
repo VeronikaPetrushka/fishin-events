@@ -1,17 +1,10 @@
 import { View, StyleSheet, Text, TouchableOpacity, Dimensions, Linking, Image} from "react-native"
 import LinearGradient from 'react-native-linear-gradient';
-import { useMusic } from '../constants/music.js';
 import Icons from "./Icons";
 
 const { height } = Dimensions.get('window');
 
 const Settings = () => {
-    const { isPlaying, togglePlay } = useMusic();
-
-    const handleToggleLoudness = async (event) => {
-        event.persist();
-        togglePlay();
-    };
 
     // change
     const handlePrivacyPolicy = () => {
@@ -67,20 +60,6 @@ const Settings = () => {
                     </LinearGradient>
                 </View>
 
-                <Text style={styles.title}>Game settings</Text>
-
-                <View style={{width: '100%', alignItems: 'center', justifyContent: 'space-between', flexDirection: 'row'}}>
-                    <Image source={require('../assets/decor/music-text.png')} style={{width: 135, height: 50, resizeMode: 'contain'}} />
-                    <TouchableOpacity style={{width: 43, height: 48}} onPress={handleToggleLoudness}>
-                        <Icons type={'music-off'} />
-                        {isPlaying && (
-                            <View style={styles.musicOn}>
-                                <Icons type={'music-on'} />
-                            </View>
-                        )}
-                    </TouchableOpacity>
-                </View>
-
             </View>
         </LinearGradient>
     )
@@ -123,15 +102,6 @@ const styles = StyleSheet.create({
         color: '#fff',
         marginLeft: 12
     },
-
-    musicOn: {
-        position: 'absolute',
-        top: 7,
-        right: 7,
-        zIndex: 10,
-        width: 30,
-        height: 25
-    }
     
 });
 

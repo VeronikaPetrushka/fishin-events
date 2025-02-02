@@ -1,4 +1,4 @@
-import { View, StyleSheet, Text, TouchableOpacity, Dimensions, Linking, Image} from "react-native"
+import { View, StyleSheet, Text, TouchableOpacity, Dimensions, Linking } from "react-native"
 import LinearGradient from 'react-native-linear-gradient';
 import Icons from "./Icons";
 
@@ -6,16 +6,14 @@ const { height } = Dimensions.get('window');
 
 const Settings = () => {
 
-    // change
     const handlePrivacyPolicy = () => {
-        const url = 'https://www.termsfeed.com/live/d3e0f7af-2724-4df1-ab86-eb8d31c8046c';
+        const url = 'https://www.termsfeed.com/live/2a381996-dfe7-4e01-b886-3150eda18a46';
         Linking.openURL(url).catch((err) => console.error('Failed to open URL:', err));
     };    
 
-    // change
     const handleRate = () => {
         const url = Platform.select({
-            ios: 'https://apps.apple.com/us/app/rhodes-escape/id6741211670',
+            ios: 'https://apps.apple.com/us/app/fishin-events-trip/id6741387644',
         });
     
         Linking.openURL(url).catch((err) => console.error('Failed to open URL:', err));

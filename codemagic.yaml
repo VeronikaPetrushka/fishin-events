@@ -10,7 +10,7 @@ workflows:
             distribution_type: app_store
             bundle_identifier: com.fishinEventsTrip2024
           vars:
-            APP_STORE_APPLE_ID: 6741211670 #change
+            APP_STORE_APPLE_ID: 6741387644
             BUNDLE_ID: "com.fishinEventsTrip2024"
             XCODE_WORKSPACE: "FishinEvents.xcworkspace"
             XCODE_SCHEME: "FishinEvents"
